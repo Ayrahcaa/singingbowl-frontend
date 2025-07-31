@@ -1,0 +1,68 @@
+.popular-products-section {
+  padding: 40px 20px;
+  background-color: #fffcf7;
+
+  .featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+
+    .section-heading-line {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #4b2e1e;
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .section-line {
+        flex-grow: 1;
+        height: 1px;
+        background: #4b2e1e89;
+        margin-left: 20px;
+      }
+    }
+
+    .view-more-btn {
+      border: 1px solid #3e220e;
+      background: transparent;
+      padding: 8px 18px;
+      border-radius: 999px;
+      color: #3e220e;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-left: 30px;
+
+      span {
+        margin-left: 8px;
+        font-size: 16px;
+      }
+
+      &:hover {
+        background: #3b1e00;
+        color: #fff;
+      }
+    }
+  }
+
+  .popular-category-wrapper {
+    margin-bottom: 40px;
+
+    .product-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 10rem;
+    }
+  }
+}

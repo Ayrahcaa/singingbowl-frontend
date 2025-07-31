@@ -1,0 +1,111 @@
+.feature-section {
+  background-color: #fff5eb;
+  .feature-inside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 8%;
+    gap: 40px;
+
+    .feature-left {
+      flex: 1;
+
+      .feature-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #4e2c0c;
+        margin-bottom: 30px;
+      }
+
+      .feature-description {
+        font-size: 1rem;
+        color: #7c6a5d;
+        line-height: 1.7;
+        max-width: 500px;
+        margin-bottom: 40px;
+      }
+
+      .feature-stats {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 40px;
+
+        .stat-box {
+          h3 {
+            font-size: 2.5rem;
+            color: #4e2c0c;
+            margin-bottom: 5px;
+          }
+
+          p {
+            font-size: 1rem;
+            color: #7c6a5d;
+          }
+        }
+
+        .divider {
+          height: 60px;
+          width: 1px;
+          background-color: #d1bfae;
+        }
+      }
+
+      .explore-button {
+        background-color: #4e2c0c;
+        color: #fff;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    .feature-right {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .arrow-circle {
+        position: absolute;
+        left: -30px;
+        top: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #f0e3d3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .arrow-icon {
+          color: #4e2c0c;
+          font-size: 18px;
+        }
+      }
+
+      .feature-image-wrapper {
+        background-color: #4e2c0c;
+        border-top-left-radius: 100% 60%;
+        border-top-right-radius: 100% 60%;
+        width: 90%;
+        height: auto;
+        padding: 60px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .feature-image {
+          max-width: 90%;
+          height: auto;
+          object-fit: contain;
+          transform: translateY(10px);
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import slugify from "slugify";
+import "./Categories.scss";
 import axios from "../../utils/axios";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,29 +20,44 @@ function Categories() {
     fetchData();
   }, []);
 
-  return (
-    <div style={{ padding: "20px" }}>
-      <h2>SHOP BY CATEGORIES</h2>
-      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-        {categories.map((cat) => (
-          <div
-            key={cat.id}
-            style={{ border: "1px solid #ccc", padding: "10px" }}
-          >
-            <h3>{cat.name}</h3>
-            <p>{cat.description}</p>
-            {cat.image && (
-              <img
-                src={`http://localhost:5000${cat.image}`}
-                alt={cat.name}
-                width="150"
-              />
-            )}
-          </div>
-        ))}
-      </div>
+  const handleCategoryClick = (cat) => {
+    const slug = slugify(cat.name, { lower: true });
+    navigate(`/category/${slug}`, {
+      state: {
+        categoryName: cat.name,
+        categoryId: cat.id,
+        categoryImage: cat.image,
+      },
+    });
+  };
 
-      <hr style={{ margin: "40px 0" }} />
+  return (
+    <div className="category-container">
+      <div className="container">
+        <h2 className="category-title">SHOP BY CATEGORY</h2>
+        <div className="category-list">
+          {categories.map((cat) => (
+            <div
+              className="category-card"
+              key={cat.id}
+              onClick={() => handleCategoryClick(cat)}
+            >
+              <div className="c-img">
+                {cat.image && (
+                  <img
+                    src={`http://192.168.1.79:5000${cat.image}`}
+                    alt={cat.name}
+                    className="category-image"
+                  />
+                )}
+              </div>
+
+              <h3 className="category-name">{cat.name}</h3>
+            </div>
+          ))}
+        </div>
+        <hr className="category-divider" />
+      </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Categories from "../../components/Categories/Categories";
 import NewCollection from "../../components/NewCollection/NewCollection";
 import Reviews from "../../components/Reviews/Reviews";
 import PopularProducts from "../../components/PopularProducts/PopularProducts";
+import FeatureSection from "../../components/FeatureSection/FeatureSection";
 
 const LandingPage = () => {
   return (
@@ -12,7 +13,7 @@ const LandingPage = () => {
       <Hero />
       <Categories />
       <NewCollection />
-      <Reviews />
+      <FeatureSection />
       <PopularProducts />
     </div>
   );

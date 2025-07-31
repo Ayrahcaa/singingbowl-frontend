@@ -1,0 +1,144 @@
+.best-seller-section {
+  padding: 50px 20px;
+  background: #fffcf7;
+  text-align: center;
+
+  .best-seller-title {
+    text-align: left;
+    margin-bottom: 3.2rem;
+
+    h2 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #3e220e;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      max-width: 500px;
+      font-size: 1.05rem;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 0rem;
+    }
+  }
+
+  .best-seller-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    position: relative;
+
+    .best-seller-card {
+      background: #fceee0;
+      padding: 30px 20px;
+      border-radius: 20px;
+      text-align: center;
+      width: 330px;
+      height: 345px;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 5px;
+        color: #3e220e;
+      }
+
+      p {
+        text-align: left;
+        font-size: 0.95rem;
+        color: #888;
+        margin-bottom: 10px;
+      }
+
+      &.highlight {
+        background: #fffcf7;
+        transform: scale(1.25);
+        box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.5);
+        z-index: 2;
+        width: 320px;
+        height: 360px;
+
+        h3 {
+          font-size: 1.25rem;
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .add-to-cart-btn {
+          background: #3e220e;
+          color: #fff;
+          border: none;
+          padding: 12px;
+          border-radius: 999px;
+          width: 100%;
+          font-size: 14px;
+          cursor: pointer;
+          margin-top: 5px;
+        }
+      }
+
+      .add-to-cart-btn {
+        background: #3e220e;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 50px;
+        width: 100%;
+        font-size: 18px;
+        margin-top: 10px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+          background-color: #d28930;
+        }
+      }
+    }
+  }
+
+  .view-more {
+    margin-top: 50px;
+    text-align: left;
+
+    button {
+      background: none;
+      border: 1px solid #3e220e;
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #3e220e;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+
+      span {
+        font-weight: bold;
+      }
+
+      &:hover {
+        background: #3b1e00;
+        color: #fff;
+      }
+    }
+  }
+}

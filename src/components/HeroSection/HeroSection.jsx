@@ -1,59 +1,99 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "../../utils/axios";
+import slugify from "slugify";
 import "./HeroSection.scss";
-import backgroundImage from "../Assets/images/heroimg1.webp";
+import shape1 from "../Assets/images/shape2.png";
+import bowlimage from "../Assets/images/bowl2-removebg.png";
+import thumb1 from "../Assets/images/bowl5-removebg.png";
+import thumb2 from "../Assets/images/bowl6-removebg.png";
 
 const Hero = () => {
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [catRes] = await Promise.all([axios.get("/categories")]);
+        setCategories(catRes.data);
+      } catch (err) {
+        console.error("Failed to fetch data:", err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleCategoryClick = (cat) => {
+    const slug = slugify(cat.name, { lower: true });
+    navigate(`/category/${slug}`, {
+      state: {
+        categoryName: cat.name,
+        categoryId: cat.id,
+        categoryImage: cat.image,
+      },
+    });
+  };
+
   return (
     <div className="hero-section">
-      <div
-        className="hero-image"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}
-      >
-        <div className="hero-overlay" />
-        {/* <div className="hero-text container text-center">
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.99, ease: "easeOut", delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h5>WELCOME TO</h5>
-            <div className="horizontal-line"></div>
-          </motion.div>
+      <div className="container">
+        <div className="background-shape">
+          <img className="bgshape1" src={shape1} alt="rectangular shape" />
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: -100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h2>ARON</h2>
-          </motion.div>
+        <div className="hero-content-top">
+          <h1 className="hero-title">
+            Sacred Sound
+            <br />
+            Timeless Craft
+          </h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: -100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h3>ENGINEERING</h3>
-          </motion.div>
+          <p className="hero-description">
+            Experience the sound of serenity. Our handcrafted <br /> Tibetan
+            instruments are rooted in ancient tradition <br /> and crafted to
+            elevate your space and spirit.
+          </p>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: -61 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.99 }}
-            viewport={{ once: true }}
-          >
-            <h4>“Where Ideas Take Shape”</h4>
-          </motion.div>
-        </div> */}
-      </div>
+        <div className="hero-content-bottom">
+          <div className="hero-left">
+            {/* <ul className="hero-category-list">
+              <li>Praying Flag</li>
+              <li>Thangka</li>
+              <li className="active">Singing Bowl</li>
+              <li>Bajra</li>
+              <li>Gong</li>
+            </ul> */}
 
-      <div className="white-container">
-        <div className="inner-container"></div>
+            <button
+              className="explore-btn"
+              onClick={() => {
+                const category = categories.find(
+                  (c) => c.name === "Tibetian Singing bowl"
+                );
+                if (category) handleCategoryClick(category);
+              }}
+            >
+              Explore Product
+            </button>
+          </div>
+
+          <div className="hero-center">
+            <img src={bowlimage} alt="Singing Bowl" className="main-bowl" />
+          </div>
+
+          <div className="hero-right">
+            <div className="thumbnail-group">
+              <div className="arrow-circle">
+                <span className="arrow-icon">↓</span>
+              </div>
+              <img src={thumb1} alt="Chair Thumb 1" className="thumbnail" />
+              <img src={thumb2} alt="Chair Thumb 2" className="thumbnail" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
