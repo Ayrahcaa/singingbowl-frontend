@@ -8,6 +8,7 @@ import OrderHistory from "./components/OrderHistory/OrderHistory";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProductsByCategory from "./pages/ProductsByCategory/ProductsByCategory";
 import ScrollToTop from "./ScrollToTop";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/order" element={<OrderHistory />} />
         <Route path="/category/:slug" element={<ProductsByCategory />} />
+        <Route path="/product/:slug" element={<ProductDetails />} />
       </Routes>
     </Router>
   );

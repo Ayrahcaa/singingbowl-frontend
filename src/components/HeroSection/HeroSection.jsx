@@ -89,8 +89,8 @@ const Hero = () => {
               <div className="arrow-circle">
                 <span className="arrow-icon">↓</span>
               </div>
-              <img src={thumb1} alt="Chair Thumb 1" className="thumbnail" />
-              <img src={thumb2} alt="Chair Thumb 2" className="thumbnail" />
+              <img src={thumb1} alt="bowl second image" className="thumbnail" />
+              <img src={thumb2} alt="bowl third image" className="thumbnail" />
             </div>
           </div>
         </div>

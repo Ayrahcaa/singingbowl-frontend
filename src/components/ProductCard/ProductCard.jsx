@@ -1,11 +1,25 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import slugify from "slugify";
 import "./ProductCard.scss";
 
 const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    const slug = slugify(product.name, { lower: true });
+    navigate(`/product/${slug}`, {
+      state: {
+        productName: product.name,
+        productId: product.id,
+        productImage: product.image,
+      },
+    });
+  };
 
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleCardClick}>
       <div className="image-wrapper">
         {loading && <div className="spinner">Loading…</div>}
         <img

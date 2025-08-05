@@ -12,7 +12,6 @@ const ProductsByCategory = () => {
   const categoryId = location.state?.categoryId;
   const categoryName = location.state?.categoryName || "Category";
   const categoryImage = location.state?.categoryImage;
-  console.log("name is :", categoryImage);
 
   useEffect(() => {
     if (!categoryId) return;
