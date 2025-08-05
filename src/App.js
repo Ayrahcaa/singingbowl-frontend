@@ -8,6 +8,8 @@ import OrderHistory from "./components/OrderHistory/OrderHistory";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProductsByCategory from "./pages/ProductsByCategory/ProductsByCategory";
 import ScrollToTop from "./ScrollToTop";
+import ProductDetailPage from "./components/ProductDetails/ProductDetails";
+import { Toaster } from "sonner";
 
 function App() {
   useEffect(() => {
@@ -20,16 +22,19 @@ function App() {
       window.history.replaceState({}, document.title, "/");
     }
   }, []);
+
   return (
     <Router>
       <ScrollToTop />
       <Navbar />
+      <Toaster position="top-right" />;
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/order" element={<OrderHistory />} />
         <Route path="/category/:slug" element={<ProductsByCategory />} />
+        <Route path="/product/:slug" element={<ProductDetailPage />} />
       </Routes>
     </Router>
   );

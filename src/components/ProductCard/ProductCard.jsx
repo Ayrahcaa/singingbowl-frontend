@@ -1,11 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import slugify from "slugify";
+
 import "./ProductCard.scss";
+import AddToCart from "../Button-AddToCart/AddToCart";
 
 const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    const slug = slugify(product.name, { lower: true });
+    navigate(`/product/${slug}`, {
+      state: {
+        productName: product.name,
+        productId: product.id,
+        productImage: product.image,
+      },
+    });
+  };
 
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleCardClick}>
       <div className="image-wrapper">
         {loading && <div className="spinner">Loading…</div>}
         <img
@@ -19,8 +35,12 @@ const ProductCard = ({ product }) => {
           }}
         />
       </div>
+
       {product.audio && (
-        <div className="product-audio-wrapper">
+        <div
+          className="product-audio-wrapper"
+          onClick={(e) => e.stopPropagation()}
+        >
           <audio controls className="product-audio">
             <source
               src={`http://192.168.1.79:5000/${product.audio}`}
@@ -30,9 +50,10 @@ const ProductCard = ({ product }) => {
           </audio>
         </div>
       )}
+
       <h4 className="product-name">{product.name}</h4>
       <p className="product-price">${product.price}</p>
-      <button className="add-to-cart-btn">🛒 Add to cart</button>
+      <AddToCart productId={product.id} quantity={1} />
     </div>
   );
 };

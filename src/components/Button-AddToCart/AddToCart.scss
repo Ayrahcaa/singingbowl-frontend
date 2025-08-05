@@ -1,0 +1,17 @@
+.add-to-cart-btn {
+  background: #3e220e;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 50px;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: #d28930;
+  }
+}
